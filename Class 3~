@@ -1,0 +1,13 @@
+//Class 3
+console.log ( 'hello world');
+
+var obj ={
+    name: 'will'
+    walk: function() {
+        consolue.log('走' x, '分钟。')
+    }
+}
+
+console.log(obj.name);
+
+obj.walk(5);
