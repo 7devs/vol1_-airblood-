@@ -1,0 +1,23 @@
+{
+  "name": "demo2",
+  "version": "1.0.0",
+  "description": "demo2 for this class",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "true"
+  },
+  "keywords": [
+    "demo",
+    "2"
+  ],
+  "author": "will",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
