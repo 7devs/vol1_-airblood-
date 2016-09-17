@@ -1,34 +1,35 @@
 var rtr = require('express').Router()
     userName = require('../models/users');
 
-rtr.route('/user')
+rtr.route('/')
     .get(function(req, res, next){
-        req.status(200).send(userName);
+        res.status(200).send(userName);
         //console.log('Here are all users:', userName)
     });
 
-rtr.route('/user/:id')
+rtr.route('/:id')
     .get(function(req, res, next){
-        var name = req.params.id;
-        if(userNmae[name]){
-            req.status(200).send(userName[name].firstName, userName[name].lastName);
-            //console.log("User's name is", userName[name].firstName, userName[name].lastName)
+        var id = req.params.id;
+        if(userName[id]){
+            res.status(200).send(userName[id].firstName + ' ' + userName[id].lastName);
+            //console.log("User's name is", userName[id].firstName + ' ' + userName[id].lastName)
     }else{
-            req.status(404).send('Not Found')
+            res.status(404).send('Not Found')
             //console.log('Not Found')
-    });
+    }});
 
-rtr.route('/user/:age')
+rtr.route('/:id')
     .put(function(req, res, next){
-        var ageCheck = req.parms.age;
-        if(userName[ageCheck]){
-            if(typeof userName[ageCheck] !=== 'number'){
-                req.status(404).send(userName[ageCheck], 'is not a number')
+        var id = req.params.id;
+        if(userName[id]){
+            if(typeof(userName[id].age) !== 'number'){
+                res.status(404).send('age type of' + '' + userName[id] + '' + 'is not a number')
             }else{
-                req.status(200).send(userName[ageCheck], 'is a number');
+                userName[id].age=req.body.age;
+                res.status(200).send(userName[id] + '' + 'is a number');
             };
         }else{
-            req.status(404).send('Not Found')
+            res.status(404).send('Not Found')
         };
     });
 
