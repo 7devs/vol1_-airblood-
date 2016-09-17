@@ -1,5 +1,6 @@
 var router = require('express').Router()
     userModel = require('../models/news.js')
+    tool = require('../newtool.js')
 
 router.route('/')
     .get(function(req, res, next){
@@ -12,9 +13,11 @@ router.route('/:id')
         if(userModel[id]){
             res.status(200).send(userModel[id]);
             console.log('前端显示了', userModel[id])
+            tool.printLine()
         }else{
             res.status(404).send('data not exist');
-            console.log('data not exist')
+            console.log('data not exist');
+            tool.printLine()
         }
     });
 

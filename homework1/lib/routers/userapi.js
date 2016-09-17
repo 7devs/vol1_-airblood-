@@ -1,5 +1,5 @@
 var rtr = require('express').Router()
-    userName = require('../models/users.js');
+    userName = require('../models/users');
 
 rtr.route('/user')
     .get(function(req, res, next){
@@ -32,13 +32,15 @@ rtr.route('/user/:age')
         };
     });
 
-rtr.routes('/user/count/:sex')
+/*rtr.routes('/user/count/:sex')
     .get(function(req, res, next){
         var Sex =req.params.sex;
-        for (var )
+        for (var i = 0; i < userName.length; i++){
+            if(userName[Sex]==='male')
+        }
         if(userName[Sex]){
             req.status(200).send()
         }
-    })
+    })*/
 
-    module.exports = router;
+    module.exports = rtr;
