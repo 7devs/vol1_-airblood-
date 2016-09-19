@@ -33,15 +33,26 @@ rtr.route('/:id')
         };
     });
 
-/*rtr.routes('/user/count/:sex')
+rtr.route('/count/:sex')
     .get(function(req, res, next){
         var Sex =req.params.sex;
+        var count = 0;
         for (var i = 0; i < userName.length; i++){
-            if(userName[Sex]==='male')
+            if(userName[i].sex === Sex )
+            count++;
+        };
+    });
+
+rtr.route('/ageAvg')
+    .get(function(req, res, next){
+        var sum = 0;
+        for (var i =0; i < userName.length; i++){
+            var sum = userName[i].age +sum;
         }
-        if(userName[Sex]){
-            req.status(200).send()
-        }
-    })*/
+        var avg = sum/userName.length;
+        res.status(202).send('Average age is' + ' ' + avg);
+    });
+
+
 
     module.exports = rtr;
