@@ -1,5 +1,5 @@
-var rtr = require('express').Router();
-    albumName = require('../models/albums.js');
+var rtr = require('express').Router()
+    albumName = require('../models/albums');
 
 rtr.route('/')
     .get(function(req, res, next){
@@ -64,4 +64,6 @@ rtr.route('/search')
         }else{
             res.status(404).send('data not found')
         };
-    })
+    });
+
+    module.exports = rtr;
