@@ -38,9 +38,12 @@ rtr.route('/count/:sex')
         var Sex =req.params.sex;
         var count = 0;
         for (var i = 0; i < userName.length; i++){
-            if(userName[i].sex === Sex )
-            count++;
+            if(userName[i].sex === Sex ){
+                count++
+            };
         };
+        console.log(count)
+        res.status(200).send(count.toString()); //坑，要加上toString
     });
 
 rtr.route('/ageAvg')
@@ -50,7 +53,7 @@ rtr.route('/ageAvg')
             var sum = userName[i].age +sum;
         }
         var ageAvg = sum/(userName.length);
-        res.status(202).send('Average age is' + ' ' + ageAvg);
+        res.status(200).send('Average age is' + ' ' + ageAvg);
     });
 
 rtr.route('/search')
