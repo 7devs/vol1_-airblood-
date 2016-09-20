@@ -49,10 +49,25 @@ rtr.route('/ageAvg')
         for (var i =0; i < userName.length; i++){
             var sum = userName[i].age +sum;
         }
-        var avg = sum/userName.length;
-        res.status(202).send('Average age is' + ' ' + avg);
+        var ageAvg = sum/(userName.length);
+        res.status(202).send('Average age is' + ' ' + ageAvg);
     });
 
+rtr.route('/search')
+    .get(function(req, res, next){
+        var com = [];
+        for(i=0; i<userName.length; i++){
+            if(userName[i].company.toLowerCase() === res.query.company.toLowerCase()){
+                com.push(userName[i]);
+            };
+        };
+        if(com.length>0){
+            res.status(202).send(com);
+        }else{
+            res.status(404).send('data not found')
+        };
+
+    });
 
 
     module.exports = rtr;
