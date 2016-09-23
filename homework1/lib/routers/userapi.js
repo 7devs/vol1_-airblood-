@@ -7,32 +7,6 @@ rtr.route('/')
         //console.log('Here are all users:', userName)
     });
 
-rtr.route('/:id')
-    .get(function(req, res, next){
-        var id = req.params.id;
-        if(userName[id]){
-            res.status(200).send(userName[id].firstName + ' ' + userName[id].lastName);
-            //console.log("User's name is", userName[id].firstName + ' ' + userName[id].lastName)
-    }else{
-            res.status(404).send('Not Found')
-            //console.log('Not Found')
-    }});
-
-rtr.route('/:id')
-    .put(function(req, res, next){
-        var id = req.params.id;
-        if(userName[id]){
-            if(typeof(userName[id].age) !== 'number'){
-                res.status(404).send('age type of' + '' + userName[id] + '' + 'is not a number')
-            }else{
-                userName[id].age=req.body.age;
-                res.status(200).send(userName[id] + '' + 'is a number');
-            };
-        }else{
-            res.status(404).send('Not Found')
-        };
-    });
-
 rtr.route('/count/:sex')
     .get(function(req, res, next){
         var Sex =req.params.sex;
@@ -53,7 +27,7 @@ rtr.route('/ageAvg')
             var sum = userName[i].age +sum;
         }
         var ageAvg = sum/(userName.length);
-        res.status(200).send('Average age is' + ' ' + ageAvg);
+        res.status(200).send('Average age is' + ' ' + ageAvg.toString());
     });
 
 rtr.route('/search')
@@ -72,5 +46,30 @@ rtr.route('/search')
 
     });
 
+    rtr.route('/:id')
+        .get(function(req, res, next){
+            var id = req.params.id;
+            if(userName[id]){
+                res.status(200).send(userName[id].firstName + ' ' + userName[id].lastName);
+                //console.log("User's name is", userName[id].firstName + ' ' + userName[id].lastName)
+        }else{
+                res.status(404).send('Not Found')
+                //console.log('Not Found')
+        }});
+
+    rtr.route('/:id')
+        .put(function(req, res, next){
+            var id = req.params.id;
+            if(userName[id]){
+                if(typeof(userName[id].age) !== 'number'){
+                    res.status(404).send('age type of' + '' + userName[id] + '' + 'is not a number')
+                }else{
+                    userName[id].age=req.body.age;
+                    res.status(200).send(userName[id] + '' + 'is a number');
+                };
+            }else{
+                res.status(404).send('Not Found')
+            };
+        });
 
     module.exports = rtr;

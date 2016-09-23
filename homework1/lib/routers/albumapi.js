@@ -6,26 +6,6 @@ rtr.route('/')
         res.status(200).send(albumName);
     });
 
-rtr.route('/:id')
-    .get(function(req, res, next){
-        var id = req.params.id;
-        if(albumName[id]){
-            res.status(200).send(albumName[id]);
-        }else{
-            res.status(404).send('data not found');
-        };
-    });
-
-rtr.route('/:id')
-    .put(function(req, res, next){
-        var id = req.params.id;
-        if(albumName[id]){
-            res.status(200).send(albumName[id].length + " " + albumName[id].title);
-        }else{
-            res.status(404).send('data not found');
-        };
-    });
-
 rtr.route('/longerSong')
     .get(function(req, res, next){
         var album = [];
@@ -65,5 +45,25 @@ rtr.route('/search')
             res.status(404).send('data not found')
         };
     });
+
+    rtr.route('/:id')
+        .get(function(req, res, next){
+            var id = req.params.id;
+            if(albumName[id]){
+                res.status(200).send(albumName[id]);
+            }else{
+                res.status(404).send('data not found');
+            };
+        });
+
+    rtr.route('/:id')
+        .put(function(req, res, next){
+            var id = req.params.id;
+            if(albumName[id]){
+                res.status(200).send(albumName[id].length + " " + albumName[id].title);
+            }else{
+                res.status(404).send('data not found');
+            };
+        });
 
     module.exports = rtr;
